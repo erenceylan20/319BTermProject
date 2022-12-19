@@ -44,6 +44,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="hLo-Zk-D2O"/>
+                    <connections>
+                        <outlet property="testLabel" destination="Myv-7B-qeF" id="9Im-Jg-iqY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
