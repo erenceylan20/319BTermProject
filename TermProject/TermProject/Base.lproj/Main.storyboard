@@ -143,15 +143,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Proje ayağa kalktı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myv-7B-qeF">
-                                <rect key="frame" x="141" y="841" width="133" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Roj-e9-GmQ">
-                                <rect key="frame" x="20" y="92" width="374" height="770"/>
+                                <rect key="frame" x="20" y="92" width="374" height="713"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="212" id="pEC-1n-tD5" customClass="EventTableViewCell" customModule="TermProject" customModuleProvider="target">
@@ -206,6 +199,7 @@
                                                 <constraint firstItem="sQZ-ah-TlZ" firstAttribute="centerX" secondItem="V11-3i-S4F" secondAttribute="centerX" id="zlE-g5-G05"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
                                         <connections>
                                             <outlet property="beginningTimeLabel" destination="zhG-ha-AFj" id="lx7-Nt-e07"/>
                                             <outlet property="endingTimeLabel" destination="gcm-Mf-i7w" id="zEu-QD-Ddb"/>
@@ -221,14 +215,35 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="e8i-IR-Vl3"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htE-wT-ee9">
+                                <rect key="frame" x="46" y="827" width="70" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Home"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVV-E3-qh3">
+                                <rect key="frame" x="163.5" y="827" width="87" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Courses"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQf-KV-tiB">
+                                <rect key="frame" x="297" y="827" width="73" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Profile"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Roj-e9-GmQ" secondAttribute="bottom" id="Xmi-VB-aMk"/>
+                            <constraint firstItem="bVV-E3-qh3" firstAttribute="leading" secondItem="htE-wT-ee9" secondAttribute="trailing" constant="47.5" id="L88-7R-cDW"/>
                             <constraint firstItem="Roj-e9-GmQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="brQ-75-eL3"/>
+                            <constraint firstItem="bVV-E3-qh3" firstAttribute="top" secondItem="Roj-e9-GmQ" secondAttribute="bottom" constant="22" id="gsD-IC-sHK"/>
+                            <constraint firstItem="htE-wT-ee9" firstAttribute="centerY" secondItem="bVV-E3-qh3" secondAttribute="centerY" id="nny-xR-iKn"/>
                             <constraint firstItem="Roj-e9-GmQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="p6P-d8-cDx"/>
+                            <constraint firstItem="bVV-E3-qh3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pOw-8h-Axj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bVV-E3-qh3" secondAttribute="bottom" id="qwl-zW-CP4"/>
+                            <constraint firstItem="EQf-KV-tiB" firstAttribute="centerY" secondItem="bVV-E3-qh3" secondAttribute="centerY" id="rCB-18-jUm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Roj-e9-GmQ" secondAttribute="trailing" constant="20" id="tNQ-Mq-bh0"/>
+                            <constraint firstItem="EQf-KV-tiB" firstAttribute="leading" secondItem="bVV-E3-qh3" secondAttribute="trailing" constant="46.5" id="v9G-Jc-LjO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hLo-Zk-D2O">
@@ -243,7 +258,6 @@
                     <connections>
                         <outlet property="addUIBarButtonItem" destination="g8g-lc-7h8" id="Nie-X5-UZf"/>
                         <outlet property="eventListTableView" destination="Roj-e9-GmQ" id="qaA-94-IKe"/>
-                        <outlet property="testLabel" destination="Myv-7B-qeF" id="9Im-Jg-iqY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -273,6 +287,9 @@
         </systemColor>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
