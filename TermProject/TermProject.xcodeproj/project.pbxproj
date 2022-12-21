@@ -16,6 +16,7 @@
 		67107F0429533C0D00AAD382 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F0329533C0D00AAD382 /* Event.swift */; };
 		67107F0629533CF700AAD382 /* EventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F0529533CF700AAD382 /* EventDataSource.swift */; };
 		67107F082953485F00AAD382 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F072953485F00AAD382 /* EventDetailViewController.swift */; };
+		67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F092953533700AAD382 /* AddEventViewController.swift */; };
 		6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776211C29532301001014A2 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		67107F0329533C0D00AAD382 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		67107F0529533CF700AAD382 /* EventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataSource.swift; sourceTree = "<group>"; };
 		67107F072953485F00AAD382 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		67107F092953533700AAD382 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		6776211C29532301001014A2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 			children = (
 				0AE01DB4295106CD000FAB06 /* MainViewController.swift */,
 				67107F072953485F00AAD382 /* EventDetailViewController.swift */,
+				67107F092953533700AAD382 /* AddEventViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */,
+				67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */,
 				0AE01DB5295106CD000FAB06 /* MainViewController.swift in Sources */,
 				0AE01DB1295106CD000FAB06 /* AppDelegate.swift in Sources */,
 				67107F0629533CF700AAD382 /* EventDataSource.swift in Sources */,
