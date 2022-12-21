@@ -12,6 +12,10 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var eventListTableView: UITableView!
     
+
+    @IBOutlet weak var addUIBarButtonItem: UIBarButtonItem!
+    
+    
     let eventDataSource = EventDataSource()
     
     @IBOutlet weak var testLabel: UILabel!
