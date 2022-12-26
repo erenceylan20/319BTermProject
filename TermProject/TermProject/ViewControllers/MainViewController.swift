@@ -10,6 +10,8 @@ import UIKit
 class MainViewController: UIViewController {
 
     
+    
+    
     @IBOutlet weak var eventListTableView: UITableView!
     
 
@@ -53,14 +55,12 @@ extension MainViewController: UITableViewDataSource {
             let beginningTime = formatter.string(from: event.beginningTime)
             let endingTime = formatter.string(from: event.endingTime)
             
-            cell.beginningTimeLabel.text = "\(beginningTime)"
-            cell.endingTimeLabel.text = "\(endingTime)"
+            cell.typeImageView.image = UIImage(named: event.eventType)
+        
         } else {
             cell.hostLabel.text = ""
             cell.titleLabel.text = ""
             cell.placeLabel.text = ""
-            cell.beginningTimeLabel.text = ""
-            cell.endingTimeLabel.text = ""
         }
         
         return cell
