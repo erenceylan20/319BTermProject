@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Untitled design - 2022-12-26T133950.065@1x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Untitled design - 2022-12-26T133950.065@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Untitled design - 2022-12-26T133950.065@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

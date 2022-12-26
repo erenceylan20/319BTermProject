@@ -17,8 +17,9 @@ class Event {
     let endingTime: Date
     let place: String
     let detail: String
+    let eventType: String
     
-    init(id: Int, hostName: String, hostSurname: String, title: String, beginningTime: Date, endingTime: Date, place: String, detail: String) {
+    init(id: Int, hostName: String, hostSurname: String, title: String, beginningTime: Date, endingTime: Date, place: String, detail: String, eventType: String) {
         self.id = id
         self.hostName = hostName
         self.hostSurname = hostSurname
@@ -27,6 +28,7 @@ class Event {
         self.endingTime = endingTime
         self.place = place
         self.detail = detail
+        self.eventType = eventType
     }
     
 }
