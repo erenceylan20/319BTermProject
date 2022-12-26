@@ -183,33 +183,33 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-Z0-FyY">
-                                                    <rect key="frame" x="170" y="95.5" width="33" height="21"/>
+                                                    <rect key="frame" x="147" y="95.5" width="33" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gE-UJ-QNM">
-                                                    <rect key="frame" x="170" y="126" width="42" height="21"/>
+                                                    <rect key="frame" x="147" y="126" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="optional" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-aB-Dd7">
-                                                    <rect key="frame" x="27" y="42" width="128" height="128"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host Name Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQZ-ah-TlZ">
+                                                    <rect key="frame" x="147" y="65.5" width="158" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="optional" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-aB-Dd7">
+                                                    <rect key="frame" x="46" y="56" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KYz-aB-Dd7" secondAttribute="height" multiplier="1:1" id="aja-c1-RQ9"/>
-                                                        <constraint firstAttribute="height" constant="128" id="nOE-Do-InY"/>
+                                                        <constraint firstAttribute="height" constant="100" id="nOE-Do-InY"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host Name Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQZ-ah-TlZ">
-                                                    <rect key="frame" x="170" y="65.5" width="158" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="jBx-wa-f28" firstAttribute="leading" secondItem="KYz-aB-Dd7" secondAttribute="trailing" constant="-155" id="6Vs-QQ-BLh"/>
+                                                <constraint firstItem="jBx-wa-f28" firstAttribute="leading" secondItem="KYz-aB-Dd7" secondAttribute="trailing" constant="-132" id="6Vs-QQ-BLh"/>
                                                 <constraint firstItem="KYz-aB-Dd7" firstAttribute="centerY" secondItem="jBx-wa-f28" secondAttribute="centerY" id="6kN-vn-Ljo"/>
                                                 <constraint firstItem="yAn-Z0-FyY" firstAttribute="leading" secondItem="sQZ-ah-TlZ" secondAttribute="leading" id="80E-WZ-4Pv"/>
                                                 <constraint firstItem="5gE-UJ-QNM" firstAttribute="top" secondItem="yAn-Z0-FyY" secondAttribute="bottom" constant="9.5" id="CXq-vD-jLa"/>
