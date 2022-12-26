@@ -94,6 +94,9 @@
                                 <rect key="frame" x="243" y="678" width="102" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Event"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="seT-9a-k2r" eventType="touchUpInside" id="JxJ-N2-R8s"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A3f-8f-vgj"/>
@@ -249,9 +252,7 @@
                     <navigationItem key="navigationItem" id="hLo-Zk-D2O">
                         <barButtonItem key="rightBarButtonItem" title="Add Event" id="g8g-lc-7h8">
                             <connections>
-                                <segue destination="seT-9a-k2r" kind="popoverPresentation" popoverAnchorBarButtonItem="g8g-lc-7h8" id="ahi-xc-tKU">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="seT-9a-k2r" kind="presentation" id="ahi-xc-tKU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

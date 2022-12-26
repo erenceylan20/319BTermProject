@@ -30,6 +30,28 @@ class AddEventViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIButton!
     
+    let eventDataSource = EventDataSource()
+    
+    
+    @IBAction func buttonClicked(_ sender: Any) {
+        
+        if let title = titleTextField.text,
+            let place = placeTextField.text {
+            
+            let event = Event(id: eventDataSource.setId(),
+                              hostName: "Eren",
+                              hostSurname: "Ceylan",
+                              title: title,
+                              beginningTime: beginningDatePicker.date,
+                              endingTime: endingDatePicker.date,
+                              place: place,
+                              detail: detailTextView.text)
+            eventDataSource.addEvent(event: event)
+        }
+        
+        self.dismiss(animated: true)
+    }
+    
     
     override func viewDidLoad() {
        super.viewDidLoad()
@@ -56,5 +78,7 @@ class AddEventViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
