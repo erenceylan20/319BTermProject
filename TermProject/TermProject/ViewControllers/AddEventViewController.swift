@@ -33,6 +33,10 @@ class AddEventViewController: UIViewController {
     
     @IBOutlet weak var typeButton: UIButton!
     
+    @IBOutlet weak var titleHelperLabel: UILabel!
+    
+    @IBOutlet weak var placeHelperLabel: UILabel!
+    
     
     
     let eventDataSource = EventDataSource()
@@ -43,29 +47,51 @@ class AddEventViewController: UIViewController {
     
     @IBAction func buttonClicked(_ sender: Any) {
         
+        titleHelperLabel.text = "Title"
+        titleHelperLabel.textColor = UIColor.black
+        placeHelperLabel.text = "Place"
+        placeHelperLabel.textColor = UIColor.black
         
         
         if let title = titleTextField.text,
             let place = placeTextField.text {
             
-            let event = Event(id: eventDataSource.setId(),
-                              hostName: "Eren",
-                              hostSurname: "Ceylan",
-                              title: title,
-                              beginningTime: beginningDatePicker.date,
-                              endingTime: endingDatePicker.date,
-                              place: place,
-                              detail: detailTextView.text,
-                              eventType: getImageName())
-            eventDataSource.addEvent(event: event)
+            if title.isEmpty || place.isEmpty {
+                if title.isEmpty {
+                    titleHelperLabel.text = "Title not given!"
+                    titleHelperLabel.textColor = UIColor.red
+                }
+                if place.isEmpty {
+                    placeHelperLabel.text = "Place not given!"
+                    placeHelperLabel.textColor = UIColor.red
+                }
+            } else {
+                let event = Event(id: eventDataSource.setId(),
+                                  hostName: "Eren",
+                                  hostSurname: "Ceylan",
+                                  title: title,
+                                  beginningTime: beginningDatePicker.date,
+                                  endingTime: endingDatePicker.date,
+                                  place: place,
+                                  detail: detailTextView.text,
+                                  eventType: getImageName())
+                eventDataSource.addEvent(event: event)
+                
+                self.dismiss(animated: true)
+            }
+            
+            
         }
         
-        self.dismiss(animated: true)
+        
     }
     
     
     override func viewDidLoad() {
        super.viewDidLoad()
+        
+        titleTextField.placeholder = "Title"
+        placeTextField.placeholder = "Place"
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)

@@ -52,8 +52,8 @@ extension MainViewController: UITableViewDataSource {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm - dd/MM"
-            let beginningTime = formatter.string(from: event.beginningTime)
-            let endingTime = formatter.string(from: event.endingTime)
+            //let beginningTime = formatter.string(from: event.beginningTime)
+            //let endingTime = formatter.string(from: event.endingTime)
             
             cell.typeImageView.image = UIImage(named: event.eventType)
         
