@@ -9,7 +9,7 @@ import Foundation
 
 class Event {
     
-    let id: Int
+    let id: String
     let hostName: String
     let hostSurname: String
     let title: String
@@ -19,7 +19,7 @@ class Event {
     let detail: String
     let eventType: String
     
-    init(id: Int, hostName: String, hostSurname: String, title: String, beginningTime: Date, endingTime: Date, place: String, detail: String, eventType: String) {
+    init(id: String, hostName: String, hostSurname: String, title: String, beginningTime: Date, endingTime: Date, place: String, detail: String, eventType: String) {
         self.id = id
         self.hostName = hostName
         self.hostSurname = hostSurname

@@ -9,8 +9,8 @@ import Foundation
 
 class EventDataSource {
     
-    private static var eventArray: [Event] = [
-        Event(id: 1,
+    private var eventArray: [Event] = [
+        Event(id: "1",
               hostName: "Eren",
               hostSurname: "Ceylan",
               title: "Dinner then coffee",
@@ -19,7 +19,7 @@ class EventDataSource {
               place: "Omer",
               detail: "We will meet and eat dinner first, then we are gonna drink coffee and chat for a while.",
              eventType: "eat"),
-        Event(id: 2,
+        Event(id: "2",
               hostName: "Serkan Berk",
               hostSurname: "Bilgiç",
               title: "Football match",
@@ -28,7 +28,7 @@ class EventDataSource {
               place: "Football Court",
               detail: "We will meet before the game and divide the teams, and after the game, the loser team will buy dinner for the winner time.",
              eventType: "sport"),
-        Event(id: 3,
+        Event(id: "3",
               hostName: "Gün",
               hostSurname: "Makinabakan",
               title: "Term Project Review",
@@ -37,7 +37,7 @@ class EventDataSource {
               place: "Engineering B50",
               detail: "In this meeting, we are going to discuss team's current progress, after that you will each get 100 points as your final grade because of your amazing project.",
              eventType: "study"),
-        Event(id: 4,
+        Event(id: "4",
               hostName: "Eren",
               hostSurname: "Ceylan",
               title: "Theatre Practice",
@@ -49,33 +49,38 @@ class EventDataSource {
     ]
     //private let baseURL = "https://wizard-world-api.herokuapp.com"
     private var id = 5
-    static var delegate: MainViewController?
+    var delegate: EventDataDelegate?
     
     init() {
     }
     
+    func getEvent(with id: String) -> Event? {
+        
+        return eventArray.first(where: {$0.id == id})
+        
+    }
     
     func getNumberOfEvents() -> Int {
-        return EventDataSource.eventArray.count
+        return eventArray.count
     }
 
     
     func getEvent(for index: Int) -> Event? {
-        guard index < EventDataSource.eventArray.count else {
+        guard index < eventArray.count else {
             return nil
         }
         
-        return EventDataSource.eventArray[index]
+        return eventArray[index]
     }
     
     func addEvent(event: Event) {
-        EventDataSource.eventArray.append(event)
-        EventDataSource.delegate?.eventListUpdated()
+        eventArray.append(event)
+        delegate?.eventListUpdated()
     }
     
-    func setId() -> Int {
+    func setId() -> String {
         id = id + 1
-        return id
+        return "\(id)"
     }
     
 }

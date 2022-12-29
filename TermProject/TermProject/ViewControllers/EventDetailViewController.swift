@@ -9,21 +9,75 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
 
+    
+    @IBOutlet weak var typeImageView: UIImageView!
+    
+    @IBOutlet weak var hostLabel: UILabel!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var beginningTimeLabel: UILabel!
+    
+    @IBOutlet weak var endingTimeLabel: UILabel!
+    
+    @IBOutlet weak var placeLabel: UILabel!
+    
+    @IBOutlet weak var detailTextView: UITextView!
+    
+    @IBOutlet weak var joinButton: UIButton!
+    
+    
+    var delegate: MainViewController?
+    
+    var eventID: String?
+    let eventDataSource = EventDataSource()
+
+    var event: Event?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(eventDataSource.getNumberOfEvents())
 
-        // Do any additional setup after loading the view.
+        eventDataSource.delegate = self
+        if let eventID = eventID
+            ,let event = eventDataSource.getEvent(with: eventID) {
+                typeImageView.image = UIImage(named: event.eventType)
+                hostLabel.text = "\(event.hostName) \(event.hostSurname)"
+                titleLabel.text = "\(event.title)"
+                placeLabel.text = "\(event.place)"
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm - dd/MM"
+                let beginningTime = formatter.string(from: event.beginningTime)
+                let endingTime = formatter.string(from: event.endingTime)
+                
+                beginningTimeLabel.text = "\(beginningTime)"
+                endingTimeLabel.text = "\(endingTime)"
+                
+                detailTextView.text = event.detail
+            
+        } else {
+            typeImageView.image = nil
+            hostLabel.text = ""
+            titleLabel.text = ""
+            placeLabel.text = ""
+            beginningTimeLabel.text = ""
+            endingTimeLabel.text = ""
+            detailTextView.text = ""
+            joinButton.isHidden = true
+        }
+        
+        
     }
     
+    
+    
 
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+}
 
+extension EventDetailViewController: EventDataDelegate {
+    
 }
