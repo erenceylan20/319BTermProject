@@ -25,7 +25,19 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "Events"
-        EventDataSource.delegate = self
+        eventDataSource.delegate = self
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let cell = sender as? EventTableViewCell,
+           let indexPath = eventListTableView.indexPath(for: cell),
+           let event = eventDataSource.getEvent(for: indexPath.row),
+           let detailController = segue.destination as? EventDetailViewController {
+            detailController.eventID = event.id
+        }
     }
 
 }
