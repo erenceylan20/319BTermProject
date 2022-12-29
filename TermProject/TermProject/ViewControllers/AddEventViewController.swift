@@ -54,7 +54,7 @@ class AddEventViewController: UIViewController {
         
         
         if let title = titleTextField.text,
-            let place = placeTextField.text {
+           let place = placeTextField.text {
             
             if title.isEmpty || place.isEmpty {
                 if title.isEmpty {
@@ -63,6 +63,15 @@ class AddEventViewController: UIViewController {
                 }
                 if place.isEmpty {
                     placeHelperLabel.text = "Place not given!"
+                    placeHelperLabel.textColor = UIColor.red
+                }
+            } else if title.count > 20 || place.count > 20 {
+                if title.count > 20 {
+                    titleHelperLabel.text = "Title too long!"
+                    titleHelperLabel.textColor = UIColor.red
+                }
+                if place.count > 20 {
+                    placeHelperLabel.text = "Place too long!"
                     placeHelperLabel.textColor = UIColor.red
                 }
             } else {

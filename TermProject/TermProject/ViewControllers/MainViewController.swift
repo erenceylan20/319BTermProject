@@ -17,6 +17,11 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var addUIBarButtonItem: UIBarButtonItem!
     
+    @IBOutlet weak var tabBar: UITabBar!
+    
+    
+    @IBOutlet weak var homeTabBarItem: UITabBarItem!
+    
     
     let eventDataSource = EventDataSource()
     
@@ -26,6 +31,10 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "Events"
         eventDataSource.delegate = self
+        
+        self.tabBar.selectedItem = homeTabBarItem
+        self.tabBar.unselectedItemTintColor = UIColor.secondaryLabel
+        
     }
     
     
