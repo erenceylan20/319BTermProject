@@ -184,40 +184,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Roj-e9-GmQ">
-                                <rect key="frame" x="20" y="92" width="374" height="707"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="707"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="212" id="pEC-1n-tD5" customClass="EventTableViewCell" customModule="TermProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="212"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pEC-1n-tD5" id="V11-3i-S4F">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="212"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeCard2" translatesAutoresizingMaskIntoConstraints="NO" id="jBx-wa-f28">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="212"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="212" id="0qW-mF-DTw"/>
                                                         <constraint firstAttribute="width" secondItem="jBx-wa-f28" secondAttribute="height" multiplier="187:106" id="mC8-5c-9PU"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-Z0-FyY">
-                                                    <rect key="frame" x="147" y="95.5" width="33" height="21"/>
+                                                    <rect key="frame" x="160" y="95.5" width="33" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gE-UJ-QNM">
-                                                    <rect key="frame" x="147" y="126" width="42" height="21"/>
+                                                    <rect key="frame" x="160" y="126" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host Name Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQZ-ah-TlZ">
-                                                    <rect key="frame" x="147" y="65.5" width="177" height="21"/>
+                                                    <rect key="frame" x="160" y="65.5" width="177" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="optional" translatesAutoresizingMaskIntoConstraints="NO" id="KYz-aB-Dd7">
@@ -230,7 +230,7 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstItem="jBx-wa-f28" firstAttribute="leading" secondItem="KYz-aB-Dd7" secondAttribute="trailing" constant="-132" id="6Vs-QQ-BLh"/>
+                                                <constraint firstItem="jBx-wa-f28" firstAttribute="leading" secondItem="KYz-aB-Dd7" secondAttribute="trailing" constant="-145" id="6Vs-QQ-BLh"/>
                                                 <constraint firstItem="KYz-aB-Dd7" firstAttribute="centerY" secondItem="jBx-wa-f28" secondAttribute="centerY" id="6kN-vn-Ljo"/>
                                                 <constraint firstItem="yAn-Z0-FyY" firstAttribute="leading" secondItem="sQZ-ah-TlZ" secondAttribute="leading" id="80E-WZ-4Pv"/>
                                                 <constraint firstItem="5gE-UJ-QNM" firstAttribute="top" secondItem="yAn-Z0-FyY" secondAttribute="bottom" constant="9.5" id="CXq-vD-jLa"/>
@@ -269,6 +269,7 @@
                                     <tabBarItem title="Courses" image="book.fill" catalog="system" id="5kp-gy-UUn"/>
                                     <tabBarItem title="Profile" image="person.crop.circle.fill" catalog="system" id="ek7-zc-4ON"/>
                                 </items>
+                                <color key="selectedImageTintColor" systemColor="systemOrangeColor"/>
                             </tabBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -279,8 +280,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JIU-Ei-rfs" secondAttribute="trailing" id="aMd-qt-ClK"/>
                             <constraint firstItem="Roj-e9-GmQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="brQ-75-eL3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Roj-e9-GmQ" secondAttribute="bottom" constant="63" id="nGa-lu-edx"/>
-                            <constraint firstItem="Roj-e9-GmQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="p6P-d8-cDx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Roj-e9-GmQ" secondAttribute="trailing" constant="20" id="tNQ-Mq-bh0"/>
+                            <constraint firstItem="Roj-e9-GmQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p6P-d8-cDx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Roj-e9-GmQ" secondAttribute="trailing" id="tNQ-Mq-bh0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hLo-Zk-D2O">
@@ -293,6 +294,8 @@
                     <connections>
                         <outlet property="addUIBarButtonItem" destination="g8g-lc-7h8" id="Nie-X5-UZf"/>
                         <outlet property="eventListTableView" destination="Roj-e9-GmQ" id="qaA-94-IKe"/>
+                        <outlet property="homeTabBarItem" destination="DGk-kS-G9Z" id="5Wi-Ve-NZM"/>
+                        <outlet property="tabBar" destination="JIU-Ei-rfs" id="aaY-94-rnm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
