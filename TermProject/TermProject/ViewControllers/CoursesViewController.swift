@@ -9,6 +9,7 @@ import UIKit
 
 class CoursesViewController: UIViewController {
     
+    
     @IBOutlet weak var courseListTableView: UITableView!
     
     let courseDataSource = CourseDataSource()

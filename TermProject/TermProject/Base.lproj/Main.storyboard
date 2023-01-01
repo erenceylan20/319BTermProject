@@ -305,76 +305,6 @@
             </objects>
             <point key="canvasLocation" x="266.66666666666669" y="97.767857142857139"/>
         </scene>
-        <!--Courses View Controller-->
-        <scene sceneID="5CG-Yx-F3a">
-            <objects>
-                <viewController storyboardIdentifier="coursesPage" id="PoL-kM-obW" customClass="CoursesViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nuA-E5-Iip">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3QI-1F-b5K">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseCell" rowHeight="128" id="oHd-mY-AHP" customClass="CourseTableViewCell" customModule="TermProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="128"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oHd-mY-AHP" id="Clo-am-2RV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyf-Z5-g9k">
-                                                    <rect key="frame" x="356" y="53.5" width="38" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWN-hr-4sw">
-                                                    <rect key="frame" x="20" y="10" width="104" height="108"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nWN-hr-4sw" firstAttribute="top" secondItem="Clo-am-2RV" secondAttribute="top" constant="10" id="1Hu-SO-ZM3"/>
-                                                <constraint firstItem="nWN-hr-4sw" firstAttribute="centerY" secondItem="Clo-am-2RV" secondAttribute="centerY" id="7NW-gU-7hk"/>
-                                                <constraint firstItem="jyf-Z5-g9k" firstAttribute="centerY" secondItem="nWN-hr-4sw" secondAttribute="centerY" id="R4q-6L-ZWU"/>
-                                                <constraint firstItem="nWN-hr-4sw" firstAttribute="leading" secondItem="Clo-am-2RV" secondAttribute="leading" constant="20" symbolic="YES" id="bKG-di-pQS"/>
-                                                <constraint firstAttribute="trailing" secondItem="jyf-Z5-g9k" secondAttribute="trailing" constant="20" symbolic="YES" id="vHh-FT-zxD"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="courseLabel" destination="nWN-hr-4sw" id="44V-Dm-74e"/>
-                                            <outlet property="timeLabel" destination="jyf-Z5-g9k" id="xlM-uP-xsa"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="PoL-kM-obW" id="YFI-jD-4ns"/>
-                                    <outlet property="delegate" destination="PoL-kM-obW" id="xk4-07-Hy4"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="aZA-Gn-ggt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="3QI-1F-b5K" firstAttribute="leading" secondItem="aZA-Gn-ggt" secondAttribute="leading" id="5eh-67-2PW"/>
-                            <constraint firstItem="aZA-Gn-ggt" firstAttribute="bottom" secondItem="3QI-1F-b5K" secondAttribute="bottom" id="Aet-Bi-ZUf"/>
-                            <constraint firstItem="aZA-Gn-ggt" firstAttribute="trailing" secondItem="3QI-1F-b5K" secondAttribute="trailing" id="oIz-lU-Etc"/>
-                            <constraint firstItem="3QI-1F-b5K" firstAttribute="top" secondItem="aZA-Gn-ggt" secondAttribute="top" id="vZI-F9-clC"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="6q3-tH-g5c"/>
-                    <connections>
-                        <outlet property="courseListTableView" destination="3QI-1F-b5K" id="U3k-un-xy9"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iZa-AM-f9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="266.66666666666669" y="867.85714285714278"/>
-        </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="YIN-NB-IEM">
             <objects>
@@ -499,12 +429,82 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="PoL-kM-obW" kind="relationship" relationship="rootViewController" id="f5T-49-sRr"/>
+                        <segue destination="uG0-mk-CJs" kind="relationship" relationship="rootViewController" id="JCq-Cb-8Fy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOC-Q6-uTP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-843" y="868"/>
+        </scene>
+        <!--Courses View Controller-->
+        <scene sceneID="WPZ-mS-Mk4">
+            <objects>
+                <viewController id="uG0-mk-CJs" customClass="CoursesViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ipE-LS-DiQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rJe-by-OWl">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseCell" rowHeight="116" id="49T-yR-TdA" customClass="CourseTableViewCell" customModule="TermProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="116"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="49T-yR-TdA" id="LxC-cZ-F37">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4R-Yf-Vme">
+                                                    <rect key="frame" x="20" y="10" width="104" height="96"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXs-QB-rUB">
+                                                    <rect key="frame" x="347" y="47.5" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="y4R-Yf-Vme" firstAttribute="top" secondItem="LxC-cZ-F37" secondAttribute="top" constant="10" id="B66-qy-Vys"/>
+                                                <constraint firstAttribute="trailing" secondItem="dXs-QB-rUB" secondAttribute="trailing" constant="33" id="H2n-6Q-aDg"/>
+                                                <constraint firstItem="y4R-Yf-Vme" firstAttribute="leading" secondItem="LxC-cZ-F37" secondAttribute="leading" constant="20" symbolic="YES" id="ec9-fM-PKL"/>
+                                                <constraint firstItem="dXs-QB-rUB" firstAttribute="centerY" secondItem="y4R-Yf-Vme" secondAttribute="centerY" id="ih6-T3-0eP"/>
+                                                <constraint firstItem="y4R-Yf-Vme" firstAttribute="centerY" secondItem="LxC-cZ-F37" secondAttribute="centerY" id="t4p-Lm-IJ7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="courseLabel" destination="y4R-Yf-Vme" id="bbI-T9-j3w"/>
+                                            <outlet property="timeLabel" destination="dXs-QB-rUB" id="p7S-MO-5hS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uG0-mk-CJs" id="xI7-J1-ARW"/>
+                                    <outlet property="delegate" destination="uG0-mk-CJs" id="o7O-IA-qC1"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qjU-eM-1No"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rJe-by-OWl" firstAttribute="leading" secondItem="qjU-eM-1No" secondAttribute="leading" id="4rM-7u-SD1"/>
+                            <constraint firstItem="qjU-eM-1No" firstAttribute="bottom" secondItem="rJe-by-OWl" secondAttribute="bottom" id="AN3-0D-2nz"/>
+                            <constraint firstItem="qjU-eM-1No" firstAttribute="trailing" secondItem="rJe-by-OWl" secondAttribute="trailing" id="XX9-PT-o4Q"/>
+                            <constraint firstItem="rJe-by-OWl" firstAttribute="top" secondItem="qjU-eM-1No" secondAttribute="top" id="x0h-MI-mNB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rSJ-nV-DXP"/>
+                    <connections>
+                        <outlet property="courseListTableView" destination="rJe-by-OWl" id="vXo-CU-Lt8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xdl-yC-a72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="215.94202898550725" y="867.85714285714278"/>
         </scene>
     </scenes>
     <resources>
