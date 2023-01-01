@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITabBarDelegate {
 
     
     
@@ -17,10 +17,6 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var addUIBarButtonItem: UIBarButtonItem!
     
-    @IBOutlet weak var tabBar: UITabBar!
-    
-    
-    @IBOutlet weak var homeTabBarItem: UITabBarItem!
     
     
     let eventDataSource = EventDataSource()
@@ -28,13 +24,23 @@ class MainViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.tabBarController?.tabBar.items?[0].image = UIImage(systemName: "house.fill")
+        self.tabBarController?.tabBar.items?[1].image = UIImage(systemName: "book.fill")
+        //self.tabBarController?.tabBar.items?[2].image = UIImage(systemName: "person.fill")
+        self.tabBarController?.tabBar.items?[0].title = "Events"
+        self.tabBarController?.tabBar.items?[1].title = "Courses"
+        //self.tabBarController?.tabBar.items?[2].title = "Profile"
+        
         self.title = "Events"
         eventDataSource.delegate = self
         
-        self.tabBar.selectedItem = homeTabBarItem
-        self.tabBar.unselectedItemTintColor = UIColor.secondaryLabel
+       
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -46,6 +52,23 @@ class MainViewController: UIViewController {
            let event = eventDataSource.getEvent(for: indexPath.row),
            let detailController = segue.destination as? EventDetailViewController {
             detailController.eventID = event.id
+        }
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if(item.tag == 1) {
+            
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            if let nextViewController = storyBoard.instantiateViewController(withIdentifier: "coursesPage") as? CoursesViewController {
+                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+                //self.navigationController?.popToViewController(nextViewController, animated: true)
+                
+            }
+           
+        } else if(item.tag == 2) {
+            // Open Profile Page
         }
     }
 
