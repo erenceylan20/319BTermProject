@@ -14,7 +14,7 @@
         <scene sceneID="ezk-6F-ig1">
             <objects>
                 <tabBarController id="ySF-Xr-gzU" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Q9r-X6-Mrm">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q9r-X6-Mrm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -199,7 +199,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Roj-e9-GmQ">
@@ -312,20 +312,75 @@
                     <view key="view" contentMode="scaleToFill" id="nuA-E5-Iip">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3QI-1F-b5K">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseCell" rowHeight="128" id="oHd-mY-AHP" customClass="CourseTableViewCell" customModule="TermProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oHd-mY-AHP" id="Clo-am-2RV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyf-Z5-g9k">
+                                                    <rect key="frame" x="356" y="53.5" width="38" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWN-hr-4sw">
+                                                    <rect key="frame" x="20" y="10" width="104" height="108"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nWN-hr-4sw" firstAttribute="top" secondItem="Clo-am-2RV" secondAttribute="top" constant="10" id="1Hu-SO-ZM3"/>
+                                                <constraint firstItem="nWN-hr-4sw" firstAttribute="centerY" secondItem="Clo-am-2RV" secondAttribute="centerY" id="7NW-gU-7hk"/>
+                                                <constraint firstItem="jyf-Z5-g9k" firstAttribute="centerY" secondItem="nWN-hr-4sw" secondAttribute="centerY" id="R4q-6L-ZWU"/>
+                                                <constraint firstItem="nWN-hr-4sw" firstAttribute="leading" secondItem="Clo-am-2RV" secondAttribute="leading" constant="20" symbolic="YES" id="bKG-di-pQS"/>
+                                                <constraint firstAttribute="trailing" secondItem="jyf-Z5-g9k" secondAttribute="trailing" constant="20" symbolic="YES" id="vHh-FT-zxD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="courseLabel" destination="nWN-hr-4sw" id="44V-Dm-74e"/>
+                                            <outlet property="timeLabel" destination="jyf-Z5-g9k" id="xlM-uP-xsa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="PoL-kM-obW" id="YFI-jD-4ns"/>
+                                    <outlet property="delegate" destination="PoL-kM-obW" id="xk4-07-Hy4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="aZA-Gn-ggt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3QI-1F-b5K" firstAttribute="leading" secondItem="aZA-Gn-ggt" secondAttribute="leading" id="5eh-67-2PW"/>
+                            <constraint firstItem="aZA-Gn-ggt" firstAttribute="bottom" secondItem="3QI-1F-b5K" secondAttribute="bottom" id="Aet-Bi-ZUf"/>
+                            <constraint firstItem="aZA-Gn-ggt" firstAttribute="trailing" secondItem="3QI-1F-b5K" secondAttribute="trailing" id="oIz-lU-Etc"/>
+                            <constraint firstItem="3QI-1F-b5K" firstAttribute="top" secondItem="aZA-Gn-ggt" secondAttribute="top" id="vZI-F9-clC"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6q3-tH-g5c"/>
+                    <connections>
+                        <outlet property="courseListTableView" destination="3QI-1F-b5K" id="U3k-un-xy9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZa-AM-f9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="868"/>
+            <point key="canvasLocation" x="266.66666666666669" y="867.85714285714278"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="YIN-NB-IEM">
             <objects>
                 <viewController id="zAY-jY-c5O" customClass="EventDetailViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2GF-Uf-2CR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventDetailBackground" translatesAutoresizingMaskIntoConstraints="NO" id="mQq-EX-0gK">
@@ -443,6 +498,9 @@
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="PoL-kM-obW" kind="relationship" relationship="rootViewController" id="f5T-49-sRr"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOC-Q6-uTP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
