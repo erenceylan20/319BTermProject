@@ -19,6 +19,7 @@
 		67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F092953533700AAD382 /* AddEventViewController.swift */; };
 		672672F4295989DA005D53E5 /* EventDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672672F3295989DA005D53E5 /* EventDataDelegate.swift */; };
 		6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776211C29532301001014A2 /* EventTableViewCell.swift */; };
+		67E610C829621B2200C76409 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E610C729621B2200C76409 /* CoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		67107F092953533700AAD382 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		672672F3295989DA005D53E5 /* EventDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataDelegate.swift; sourceTree = "<group>"; };
 		6776211C29532301001014A2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		67E610C729621B2200C76409 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				0AE01DB4295106CD000FAB06 /* MainViewController.swift */,
 				67107F072953485F00AAD382 /* EventDetailViewController.swift */,
 				67107F092953533700AAD382 /* AddEventViewController.swift */,
+				67E610C729621B2200C76409 /* CoursesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				67107F082953485F00AAD382 /* EventDetailViewController.swift in Sources */,
 				67107F0429533C0D00AAD382 /* Event.swift in Sources */,
 				672672F4295989DA005D53E5 /* EventDataDelegate.swift in Sources */,
+				67E610C829621B2200C76409 /* CoursesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
