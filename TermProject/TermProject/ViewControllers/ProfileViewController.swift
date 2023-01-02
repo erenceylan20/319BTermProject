@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
@@ -28,6 +29,19 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logoutClicked(_ sender: Any) {
         print("log out")
+        
+        do {
+            try Auth.auth().signOut()
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "RegisterNavigationController") as? UINavigationController {
+                self.view.window?.rootViewController = viewController
+                self.view.window?.makeKeyAndVisible()
+            }
+        } catch {
+            
+        }
+
+        
     }
     
     
