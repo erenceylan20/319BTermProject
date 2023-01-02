@@ -34,6 +34,41 @@ class AddCourseViewController: UIViewController {
     
     
     @IBAction func addCourse(_ sender: Any) {
+        
+        titleHelperLabel.text = "Title"
+        titleHelperLabel.textColor = UIColor.black
+        codeHelperLabel.text = "Course Code"
+        codeHelperLabel.textColor = UIColor.black
+        
+        
+        if let title = titleTextField.text,
+           let code = codeTextField.text {
+            
+            if title.isEmpty || code.isEmpty {
+                if title.isEmpty {
+                    titleHelperLabel.text = "Title not given!"
+                    titleHelperLabel.textColor = UIColor.red
+                }
+                if code.isEmpty {
+                    codeHelperLabel.text = "Course code not given!"
+                    codeHelperLabel.textColor = UIColor.red
+                }
+            } else if title.count > 20 || code.count > 20 {
+                if title.count > 20 {
+                    titleHelperLabel.text = "Title too long!"
+                    titleHelperLabel.textColor = UIColor.red
+                }
+                if code.count > 20 {
+                    codeHelperLabel.text = "Course code too long!"
+                    codeHelperLabel.textColor = UIColor.red
+                }
+            } else {
+                
+                
+                self.dismiss(animated: true)
+            }
+        }
+        
     }
     
 
