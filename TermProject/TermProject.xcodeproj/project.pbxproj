@@ -22,6 +22,10 @@
 		67381830296246180070571E /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6738182F296246180070571E /* Course.swift */; };
 		67381832296246420070571E /* CourseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67381831296246420070571E /* CourseDataSource.swift */; };
 		6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776211C29532301001014A2 /* EventTableViewCell.swift */; };
+		67C3EBA72962EADF0083BDBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67C3EBA62962EADF0083BDBF /* GoogleService-Info.plist */; };
+		67C3EBAA2962EB4D0083BDBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67C3EBA92962EB4D0083BDBF /* FirebaseAuth */; };
+		67C3EBAC2962EC530083BDBF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C3EBAB2962EC530083BDBF /* SignInViewController.swift */; };
+		67C3EBAE2962EE1E0083BDBF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C3EBAD2962EE1E0083BDBF /* LogInViewController.swift */; };
 		67E610C829621B2200C76409 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E610C729621B2200C76409 /* CoursesViewController.swift */; };
 		67ED0DAA2962CB2A00F000D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED0DA92962CB2A00F000D5 /* ProfileViewController.swift */; };
 		67ED0DAC2962CD4A00F000D5 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED0DAB2962CD4A00F000D5 /* AddCourseViewController.swift */; };
@@ -45,6 +49,9 @@
 		6738182F296246180070571E /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		67381831296246420070571E /* CourseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDataSource.swift; sourceTree = "<group>"; };
 		6776211C29532301001014A2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		67C3EBA62962EADF0083BDBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67C3EBAB2962EC530083BDBF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		67C3EBAD2962EE1E0083BDBF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		67E610C729621B2200C76409 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		67ED0DA92962CB2A00F000D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		67ED0DAB2962CD4A00F000D5 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67C3EBAA2962EB4D0083BDBF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +95,7 @@
 				0AE01DB0295106CD000FAB06 /* AppDelegate.swift */,
 				0AE01DB2295106CD000FAB06 /* SceneDelegate.swift */,
 				0AE01DB6295106CD000FAB06 /* Main.storyboard */,
+				67C3EBA62962EADF0083BDBF /* GoogleService-Info.plist */,
 			);
 			path = TermProject;
 			sourceTree = "<group>";
@@ -100,6 +109,8 @@
 				67E610C729621B2200C76409 /* CoursesViewController.swift */,
 				67ED0DA92962CB2A00F000D5 /* ProfileViewController.swift */,
 				67ED0DAB2962CD4A00F000D5 /* AddCourseViewController.swift */,
+				67C3EBAB2962EC530083BDBF /* SignInViewController.swift */,
+				67C3EBAD2962EE1E0083BDBF /* LogInViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -151,6 +162,9 @@
 			dependencies = (
 			);
 			name = TermProject;
+			packageProductDependencies = (
+				67C3EBA92962EB4D0083BDBF /* FirebaseAuth */,
+			);
 			productName = TermProject;
 			productReference = 0AE01DAD295106CD000FAB06 /* TermProject.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +193,9 @@
 				Base,
 			);
 			mainGroup = 0AE01DA4295106CD000FAB06;
+			packageReferences = (
+				67C3EBA82962EB4D0083BDBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 0AE01DAE295106CD000FAB06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67C3EBA72962EADF0083BDBF /* GoogleService-Info.plist in Resources */,
 				0AE01DBD295106D0000FAB06 /* LaunchScreen.storyboard in Resources */,
 				0AE01DBA295106D0000FAB06 /* Assets.xcassets in Resources */,
 				0AE01DB8295106CD000FAB06 /* Main.storyboard in Resources */,
@@ -210,6 +228,7 @@
 				6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */,
 				67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */,
 				0AE01DB5295106CD000FAB06 /* MainViewController.swift in Sources */,
+				67C3EBAE2962EE1E0083BDBF /* LogInViewController.swift in Sources */,
 				67ED0DAA2962CB2A00F000D5 /* ProfileViewController.swift in Sources */,
 				0AE01DB1295106CD000FAB06 /* AppDelegate.swift in Sources */,
 				67107F0629533CF700AAD382 /* EventDataSource.swift in Sources */,
@@ -218,6 +237,7 @@
 				0AE01DB3295106CD000FAB06 /* SceneDelegate.swift in Sources */,
 				67107F082953485F00AAD382 /* EventDetailViewController.swift in Sources */,
 				67107F0429533C0D00AAD382 /* Event.swift in Sources */,
+				67C3EBAC2962EC530083BDBF /* SignInViewController.swift in Sources */,
 				672672F4295989DA005D53E5 /* EventDataDelegate.swift in Sources */,
 				67E610C829621B2200C76409 /* CoursesViewController.swift in Sources */,
 				6738182E2962457B0070571E /* CourseTableViewCell.swift in Sources */,
@@ -440,6 +460,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67C3EBA82962EB4D0083BDBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67C3EBA92962EB4D0083BDBF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67C3EBA82962EB4D0083BDBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0AE01DA5295106CD000FAB06 /* Project object */;
 }
