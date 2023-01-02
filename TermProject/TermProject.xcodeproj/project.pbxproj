@@ -24,7 +24,11 @@
 		67107F082953485F00AAD382 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F072953485F00AAD382 /* EventDetailViewController.swift */; };
 		67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67107F092953533700AAD382 /* AddEventViewController.swift */; };
 		672672F4295989DA005D53E5 /* EventDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672672F3295989DA005D53E5 /* EventDataDelegate.swift */; };
+		6738182E2962457B0070571E /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6738182D2962457B0070571E /* CourseTableViewCell.swift */; };
+		67381830296246180070571E /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6738182F296246180070571E /* Course.swift */; };
+		67381832296246420070571E /* CourseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67381831296246420070571E /* CourseDataSource.swift */; };
 		6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776211C29532301001014A2 /* EventTableViewCell.swift */; };
+		67E610C829621B2200C76409 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E610C729621B2200C76409 /* CoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,9 +51,16 @@
 		67107F072953485F00AAD382 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		67107F092953533700AAD382 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		672672F3295989DA005D53E5 /* EventDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataDelegate.swift; sourceTree = "<group>"; };
+		6738182D2962457B0070571E /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		6738182F296246180070571E /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		67381831296246420070571E /* CourseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDataSource.swift; sourceTree = "<group>"; };
 		6776211C29532301001014A2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+
 		91C5679AE22421D9F469B22A /* Pods_TermProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TermProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BCC4378975CB8AA2C5DD876 /* Pods-TermProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TermProject.release.xcconfig"; path = "Target Support Files/Pods-TermProject/Pods-TermProject.release.xcconfig"; sourceTree = "<group>"; };
+
+		67E610C729621B2200C76409 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +125,9 @@
 				67107F092953533700AAD382 /* AddEventViewController.swift */,
 				0A0AA0FF296097C300E61C62 /* LoginViewController.swift */,
 				0A0AA1012960983B00E61C62 /* SignupViewController.swift */,
+
+				67E610C729621B2200C76409 /* CoursesViewController.swift */,
+
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,6 +166,8 @@
 				67107F0329533C0D00AAD382 /* Event.swift */,
 				67107F0529533CF700AAD382 /* EventDataSource.swift */,
 				672672F3295989DA005D53E5 /* EventDataDelegate.swift */,
+				6738182F296246180070571E /* Course.swift */,
+				67381831296246420070571E /* CourseDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				6776211C29532301001014A2 /* EventTableViewCell.swift */,
+				6738182D2962457B0070571E /* CourseTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -280,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67381830296246180070571E /* Course.swift in Sources */,
 				6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */,
 				67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */,
 				0A0AA1022960983B00E61C62 /* SignupViewController.swift in Sources */,
@@ -288,11 +306,16 @@
 				67107F0629533CF700AAD382 /* EventDataSource.swift in Sources */,
 				0A0AA1062962723700E61C62 /* Utilities.swift in Sources */,
 				0A98F33329627A550092AA5C /* Constants.swift in Sources */,
+
+				67381832296246420070571E /* CourseDataSource.swift in Sources */,
+
 				0AE01DB3295106CD000FAB06 /* SceneDelegate.swift in Sources */,
 				67107F082953485F00AAD382 /* EventDetailViewController.swift in Sources */,
 				67107F0429533C0D00AAD382 /* Event.swift in Sources */,
 				0A0AA100296097C300E61C62 /* LoginViewController.swift in Sources */,
 				672672F4295989DA005D53E5 /* EventDataDelegate.swift in Sources */,
+				67E610C829621B2200C76409 /* CoursesViewController.swift in Sources */,
+				6738182E2962457B0070571E /* CourseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

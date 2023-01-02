@@ -69,9 +69,14 @@ class EventDetailViewController: UIViewController {
         }
         
         
+        
+        
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
 
     
