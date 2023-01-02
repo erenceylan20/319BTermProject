@@ -499,7 +499,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rSJ-nV-DXP">
-                        <barButtonItem key="rightBarButtonItem" title="Add Course" id="5LW-fb-nxy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add Course" id="5LW-fb-nxy">
+                            <connections>
+                                <segue destination="ydq-hw-dSa" kind="presentation" id="ScC-Ts-hkq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="courseListTableView" destination="rJe-by-OWl" id="vXo-CU-Lt8"/>
@@ -508,6 +512,125 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdl-yC-a72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="215.94202898550725" y="867.85714285714278"/>
+        </scene>
+        <!--Add Course View Controller-->
+        <scene sceneID="t4E-yk-H7D">
+            <objects>
+                <viewController id="ydq-hw-dSa" customClass="AddCourseViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H2w-mh-2fr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a course!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKo-RW-VwW">
+                                <rect key="frame" x="141.5" y="101" width="131" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Beginning Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieg-D3-123">
+                                <rect key="frame" x="134" y="306" width="131" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ending Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYf-X4-ucD">
+                                <rect key="frame" x="148" y="408" width="105" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2s-3K-XYf">
+                                <rect key="frame" x="69.5" y="179" width="275" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="d2s-3K-XYf" secondAttribute="height" multiplier="275:34" id="KMw-it-ewn"/>
+                                    <constraint firstAttribute="width" constant="275" id="d7Q-o6-5Wi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01e-ew-HPo">
+                                <rect key="frame" x="69.5" y="238" width="275" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="01e-ew-HPo" secondAttribute="height" multiplier="275:34" id="6sc-8W-8p0"/>
+                                    <constraint firstAttribute="width" constant="275" id="7eu-sR-hQw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar0-Mk-tWi">
+                                <rect key="frame" x="70" y="152" width="22" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnZ-BE-Ygh">
+                                <rect key="frame" x="69.5" y="224" width="63" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="B3G-S8-aKM">
+                                <rect key="frame" x="156" y="344" width="102" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="dMe-4g-RwY"/>
+                                    <constraint firstAttribute="width" secondItem="B3G-S8-aKM" secondAttribute="height" multiplier="3:1" id="zrC-3u-GvX"/>
+                                </constraints>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-7g-CWr">
+                                <rect key="frame" x="156" y="444.5" width="102" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ewg-7g-CWr" secondAttribute="height" multiplier="3:1" id="H68-cO-wYO"/>
+                                    <constraint firstAttribute="width" constant="102" id="Mf1-73-MWt"/>
+                                </constraints>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7N-s1-zYP">
+                                <rect key="frame" x="239" y="528" width="114" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Course"/>
+                                <connections>
+                                    <action selector="addCourse:" destination="ydq-hw-dSa" eventType="touchUpInside" id="jUp-In-SU9"/>
+                                    <action selector="buttonClicked:" destination="seT-9a-k2r" eventType="touchUpInside" id="3Bc-BW-XdO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HQn-Sn-6oN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B3G-S8-aKM" firstAttribute="top" secondItem="ieg-D3-123" secondAttribute="bottom" constant="15" id="2E9-9G-FzB"/>
+                            <constraint firstItem="v7N-s1-zYP" firstAttribute="leading" secondItem="ewg-7g-CWr" secondAttribute="trailing" constant="-19" id="2O5-Ec-kiH"/>
+                            <constraint firstItem="d2s-3K-XYf" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="3dH-nA-fdu"/>
+                            <constraint firstItem="01e-ew-HPo" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="5Pu-W8-MQn"/>
+                            <constraint firstItem="mYf-X4-ucD" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="A8O-CL-2fC"/>
+                            <constraint firstItem="LKo-RW-VwW" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="EeM-kX-MYX"/>
+                            <constraint firstItem="Ar0-Mk-tWi" firstAttribute="leading" secondItem="d2s-3K-XYf" secondAttribute="leading" id="FGD-kD-skN"/>
+                            <constraint firstItem="xnZ-BE-Ygh" firstAttribute="leading" secondItem="01e-ew-HPo" secondAttribute="leading" id="P71-sd-8a9"/>
+                            <constraint firstItem="B3G-S8-aKM" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="PDm-Kk-ngq"/>
+                            <constraint firstItem="d2s-3K-XYf" firstAttribute="top" secondItem="Ar0-Mk-tWi" secondAttribute="bottom" constant="4" id="XZD-Aw-Ch8"/>
+                            <constraint firstItem="01e-ew-HPo" firstAttribute="top" secondItem="d2s-3K-XYf" secondAttribute="bottom" constant="25" id="fXp-pi-KB0"/>
+                            <constraint firstItem="mYf-X4-ucD" firstAttribute="top" secondItem="B3G-S8-aKM" secondAttribute="bottom" constant="29.5" id="ftj-jB-An1"/>
+                            <constraint firstItem="01e-ew-HPo" firstAttribute="top" secondItem="xnZ-BE-Ygh" secondAttribute="bottom" constant="2" id="mrN-86-GVa"/>
+                            <constraint firstItem="v7N-s1-zYP" firstAttribute="top" secondItem="ewg-7g-CWr" secondAttribute="bottom" constant="49.5" id="nlF-nq-8Zk"/>
+                            <constraint firstItem="ewg-7g-CWr" firstAttribute="top" secondItem="mYf-X4-ucD" secondAttribute="bottom" constant="14" id="qJo-Ef-7kY"/>
+                            <constraint firstItem="ieg-D3-123" firstAttribute="top" secondItem="01e-ew-HPo" secondAttribute="bottom" constant="34" id="u13-VE-Nhv"/>
+                            <constraint firstItem="ieg-D3-123" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="v8M-yu-xbt"/>
+                            <constraint firstItem="ewg-7g-CWr" firstAttribute="centerX" secondItem="HQn-Sn-6oN" secondAttribute="centerX" id="wXy-oo-G2G"/>
+                            <constraint firstItem="LKo-RW-VwW" firstAttribute="top" secondItem="HQn-Sn-6oN" secondAttribute="top" constant="53" id="y0M-9q-RfH"/>
+                            <constraint firstItem="d2s-3K-XYf" firstAttribute="top" secondItem="LKo-RW-VwW" secondAttribute="bottom" constant="51" id="z5V-XI-JnC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addCourseButton" destination="v7N-s1-zYP" id="TLu-oA-Nd2"/>
+                        <outlet property="beginningTimeDatePicker" destination="B3G-S8-aKM" id="oAf-Mu-H7K"/>
+                        <outlet property="codeHelperLabel" destination="xnZ-BE-Ygh" id="ita-IW-OPl"/>
+                        <outlet property="codeTextField" destination="01e-ew-HPo" id="KW2-lS-he6"/>
+                        <outlet property="endingTimeDatePicker" destination="ewg-7g-CWr" id="VdZ-Lg-EXb"/>
+                        <outlet property="titleHelperLabel" destination="Ar0-Mk-tWi" id="pDI-rp-BZr"/>
+                        <outlet property="titleTextField" destination="d2s-3K-XYf" id="vcb-E7-akF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4dL-dW-Gac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1266.6666666666667" y="867.85714285714278"/>
         </scene>
         <!--Item-->
         <scene sceneID="BX9-54-gKr">
