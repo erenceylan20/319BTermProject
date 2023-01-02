@@ -20,9 +20,8 @@ class CourseDataSource {
         Course(id: "1", title: "Managerial Accounting", code: "ACCT202", beginningTime: Date(), endingTime: Date()),
         ],
         [
-        Course(id: "1", title: "Linear Algebra", code: "ENGR200", beginningTime: Date(), endingTime: Date()),
-        Course(id: "1", title: "Software Engineering", code: "COMP302", beginningTime: Date(), endingTime: Date()),
-        Course(id: "1", title: "Mobile App Develpoment", code: "COMP319B", beginningTime: Date(), endingTime: Date()),
+        Course(id: "1", title: "Operating Systems", code: "COMP304", beginningTime: Date(), endingTime: Date()),
+        Course(id: "1", title: "Academic Writing", code: "ACWR106", beginningTime: Date(), endingTime: Date()),
         ],
         [
         Course(id: "1", title: "Linear Algebra", code: "ENGR200", beginningTime: Date(), endingTime: Date()),
@@ -31,9 +30,8 @@ class CourseDataSource {
         Course(id: "1", title: "Managerial Accounting", code: "ACCT202", beginningTime: Date(), endingTime: Date()),
         ],
         [
-        Course(id: "1", title: "Linear Algebra", code: "ENGR200", beginningTime: Date(), endingTime: Date()),
-        Course(id: "1", title: "Software Engineering", code: "COMP302", beginningTime: Date(), endingTime: Date()),
-        Course(id: "1", title: "Mobile App Develpoment", code: "COMP319B", beginningTime: Date(), endingTime: Date()),
+        Course(id: "1", title: "Operating Systems", code: "COMP304", beginningTime: Date(), endingTime: Date()),
+        Course(id: "1", title: "Academic Writing", code: "ACWR106", beginningTime: Date(), endingTime: Date()),
         ],
         [],
         [],

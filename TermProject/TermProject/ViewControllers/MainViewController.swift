@@ -26,10 +26,10 @@ class MainViewController: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         self.tabBarController?.tabBar.items?[0].image = UIImage(systemName: "house.fill")
         self.tabBarController?.tabBar.items?[1].image = UIImage(systemName: "book.fill")
-        //self.tabBarController?.tabBar.items?[2].image = UIImage(systemName: "person.fill")
+        self.tabBarController?.tabBar.items?[2].image = UIImage(systemName: "person.fill")
         self.tabBarController?.tabBar.items?[0].title = "Events"
         self.tabBarController?.tabBar.items?[1].title = "Courses"
-        //self.tabBarController?.tabBar.items?[2].title = "Profile"
+        self.tabBarController?.tabBar.items?[2].title = "Profile"
         
         self.title = "Events"
         eventDataSource.delegate = self
