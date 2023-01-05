@@ -75,4 +75,10 @@ class CourseDataSource {
         return courseArray[day][index]
     }
     
+    func getCourseArray() ->[[Course]] {
+        return self.courseArray
+    }
+    
+   
+    
 }

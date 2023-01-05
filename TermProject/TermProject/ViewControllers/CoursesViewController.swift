@@ -12,6 +12,7 @@ class CoursesViewController: UIViewController {
     
     @IBOutlet weak var courseListTableView: UITableView!
     
+   
     let courseDataSource = CourseDataSource()
 
     override func viewDidLoad() {
@@ -70,6 +71,23 @@ extension CoursesViewController: UITableViewDataSource {
         
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        
+//        let deleteAction = UIContextualAction(style: .normal,
+//                                              title: "Delete") { _, _, _ in
+//            
+//            
+//            
+//            
+//            self.courseListTableView.reloadData()
+//           
+//        }
+//        deleteAction.backgroundColor = .systemRed
+//        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+//        
+//        return config
+//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return courseDataSource.getWeekDayName(day: section)
