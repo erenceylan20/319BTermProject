@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class EventDetailViewController: UIViewController {
 
@@ -29,32 +30,41 @@ class EventDetailViewController: UIViewController {
     
     var delegate: MainViewController?
     
-    var eventID: String?
+    //var eventID: String?
     let eventDataSource = EventDataSource()
 
     var event: Event?
     
+    var selfEvent: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(eventDataSource.getNumberOfEvents())
 
-        eventDataSource.delegate = self
-        if let eventID = eventID
-            ,let event = eventDataSource.getEvent(with: eventID) {
+       
+        if let event = event
+             {
                 typeImageView.image = UIImage(named: event.eventType)
                 hostLabel.text = "\(event.hostName) \(event.hostSurname)"
                 titleLabel.text = "\(event.title)"
                 placeLabel.text = "\(event.place)"
-                
+            
                 let formatter = DateFormatter()
-                formatter.dateFormat = "HH:mm - dd/MM"
+                formatter.dateFormat = "dd/MM - HH:mm"
                 let beginningTime = formatter.string(from: event.beginningTime)
                 let endingTime = formatter.string(from: event.endingTime)
                 
                 beginningTimeLabel.text = "\(beginningTime)"
                 endingTimeLabel.text = "\(endingTime)"
                 
+                let userId = (Auth.auth().currentUser?.uid ?? "") as String
+            
+                if userId == event.hostId {
+                    joinButton.setTitle("DELETE", for: .normal)
+                    selfEvent = true
+                }
+            
                 detailTextView.text = event.detail
             
         } else {
@@ -78,9 +88,20 @@ class EventDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-
     
-
+    
+    @IBAction func joinClicked(_ sender: Any) {
+        if selfEvent {
+            eventDataSource.deleteEvent(event: event)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            eventDataSource.updateEvent(event: event)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    
+    
 }
 
 extension EventDetailViewController: EventDataDelegate {

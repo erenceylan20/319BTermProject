@@ -75,16 +75,23 @@ class AddEventViewController: UIViewController {
                     placeHelperLabel.textColor = UIColor.red
                 }
             } else {
+                
+                
+                let user = eventDataSource.getUser()
+                
                 let event = Event(id: eventDataSource.setId(),
-                                  hostName: "Eren",
-                                  hostSurname: "Ceylan",
+                                  hostId: user["uid"] ?? "",
+                                  hostName: user["firstName"] ?? "",
+                                  hostSurname: user["lastName"] ?? "",
                                   title: title,
                                   beginningTime: beginningDatePicker.date,
                                   endingTime: endingDatePicker.date,
                                   place: place,
                                   detail: detailTextView.text,
-                                  eventType: getImageName())
-                eventDataSource.addEvent(event: event)
+                                  eventType: getImageName(),
+                                  attendees: [],
+                                  createdTime: Date())
+                eventDataSource.addNewData(event: event)
                 
                 self.dismiss(animated: true)
             }

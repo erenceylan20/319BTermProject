@@ -6,52 +6,21 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestore
 
 class EventDataSource {
     
-    private var eventArray: [Event] = [
-        Event(id: "1",
-              hostName: "Eren",
-              hostSurname: "Ceylan",
-              title: "Dinner then coffee",
-              beginningTime: Date(),
-              endingTime: Date(),
-              place: "Omer",
-              detail: "We will meet and eat dinner first, then we are gonna drink coffee and chat for a while.",
-             eventType: "eat"),
-        Event(id: "2",
-              hostName: "Serkan Berk",
-              hostSurname: "Bilgiç",
-              title: "Football match",
-              beginningTime: Date(),
-              endingTime: Date(),
-              place: "Football Court",
-              detail: "We will meet before the game and divide the teams, and after the game, the loser team will buy dinner for the winner time.",
-             eventType: "sport"),
-        Event(id: "3",
-              hostName: "Gün",
-              hostSurname: "Makinabakan",
-              title: "Term Project Review",
-              beginningTime: Date(),
-              endingTime: Date(),
-              place: "Engineering B50",
-              detail: "In this meeting, we are going to discuss team's current progress, after that you will each get 100 points as your final grade because of your amazing project.",
-             eventType: "study"),
-        Event(id: "4",
-              hostName: "Eren",
-              hostSurname: "Ceylan",
-              title: "Theatre Practice",
-              beginningTime: Date(),
-              endingTime: Date(),
-              place: "Omer -3 Theatre",
-              detail: "I need 3 people to make practice about a play that I am going to perform at the end of the semester. I would be happy if three of you join my event :)",
-             eventType: "optional"),
-    ]
+    let db = Firestore.firestore()
+    var user: [String: String] = ["uid": "", "firstName": "", "lastName": ""]
+    
+    private var eventArray: [Event] = []
     //private let baseURL = "https://wizard-world-api.herokuapp.com"
     private var id = 5
-    var delegate: EventDataDelegate?
+    static var delegate: EventDataDelegate?
     
     init() {
+        setUser()
     }
     
     func getEvent(with id: String) -> Event? {
@@ -73,14 +42,142 @@ class EventDataSource {
         return eventArray[index]
     }
     
-    func addEvent(event: Event) {
-        eventArray.append(event)
-        delegate?.eventListUpdated()
-    }
-    
     func setId() -> String {
         id = id + 1
         return "\(id)"
+    }
+    
+    func addNewData(event: Event) {
+        let temp = [
+            "id": event.id,
+            "hostId": event.hostId,
+            "hostName": event.hostName,
+            "hostSurname": event.hostSurname,
+            "title": event.title,
+            "beginningTime": event.beginningTime,
+            "endingTime": event.endingTime,
+            "place": event.place,
+            "detail": event.detail,
+            "eventType": event.eventType,
+            "attendees": event.attendees,
+            "createdTime": Date()
+        ] as [String : Any]
+        db.collection("events")
+            .addDocument(data: temp) 
+        
+    }
+    
+    func setUser() {
+        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid ?? "").getDocuments { snapshot, error in
+            if error != nil {
+                
+            } else {
+ 
+                snapshot?.documents.map({ d in
+                    self.user["uid"] = Auth.auth().currentUser?.uid
+                    self.user["firstName"] = d["firstName"] as? String ?? "Unknown"
+                    self.user["lastName"] = d["lastName"] as? String ?? "Unknown"
+                })
+
+            }
+            
+        }
+    }
+    
+    func deleteEvent(event: Event?) {
+        self.db.collection("events").document("\(event?.id ?? "")").delete()
+    }
+    
+    func fetchEvents() {
+        db.collection("events").getDocuments() { (querySnapshot, error) in
+                                if let error = error {
+                                        print("Error getting documents: \(error)")
+                                } else {
+                                        self.eventArray = []
+                                        for document in querySnapshot!.documents {
+                                            let data = document.data()
+                                            let beginngTime = data["beginningTime"] as? Timestamp
+                                            let endingTime = data["endingTime"] as?  Timestamp
+                                            let createdTime = data["createdTime"] as? Timestamp
+                                            let event = Event(id: document.documentID,
+                                                              hostId: data["hostId"] as? String ?? "",
+                                                              hostName: data["hostName"] as? String ?? "",
+                                                              hostSurname: data["hostSurname"] as? String ?? "",
+                                                              title: data["title"] as? String ?? "",
+                                                              beginningTime: beginngTime?.dateValue() ?? Date(),
+                                                              endingTime: endingTime?.dateValue() ?? Date(),
+                                                              place: data["place"] as? String ?? "",
+                                                              detail: data["detail"] as? String ?? "",
+                                                              eventType: data["eventType"] as? String ?? "",
+                                                              attendees: data["attendees"] as? [String] ?? [],
+                                                              createdTime: createdTime?.dateValue() ?? Date())
+                                            self.eventArray.append(event)
+                                        }
+                                    self.eventArray = self.eventArray.sorted(by: {
+                                        $0.createdTime.compare($1.createdTime) == .orderedDescending
+                                    })
+                                        EventDataSource.delegate?.eventListUpdated()
+                                }
+                }
+    }
+    
+    func updateEvent(event: Event?) {
+        
+        db.collection("events").getDocuments() { (querySnapshot, error) in
+                                if let error = error {
+                                        print("Error getting documents: \(error)")
+                                } else {
+                                        for document in querySnapshot!.documents {
+                                            if event?.id == document.documentID {
+                                                var array = document.data()["attendees"] as? [String] ?? []
+                                                let userId = Auth.auth().currentUser?.uid ?? ""
+                                                
+                                                if !array.contains(userId) {
+                                                    array.append(userId)
+                                                    document.reference.updateData([
+                                                                    "attendees": array
+                                                    ])
+                                                }
+                                                
+                                                return
+                                                
+                                            }
+                                            
+                                        }
+                                    
+                                }
+                }
+
+    }
+    
+    func checkIfJoined(event: Event?) -> Bool {
+        var checker = false
+        db.collection("events").getDocuments() { (querySnapshot, error) in
+                                if let error = error {
+                                        print("Error getting documents: \(error)")
+                                } else {
+                                        for document in querySnapshot!.documents {
+                                            if event?.id == document.documentID {
+                                                let array = document.data()["attendees"] as? [String] ?? []
+                                                let userId = Auth.auth().currentUser?.uid ?? ""
+                                                if array.contains(userId) {
+                                                    checker = true
+                                                }
+                                                return
+                                                
+                                            }
+                                            
+                                        }
+                                    
+                                }
+                }
+        return checker
+        
+
+    }
+    
+    func getUser() -> [String: String]{
+        return self.user
     }
     
 }
