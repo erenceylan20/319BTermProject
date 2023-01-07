@@ -21,6 +21,8 @@ class MainViewController: UIViewController, UITabBarDelegate {
     
     let eventDataSource = EventDataSource()
     
+    let refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,11 @@ class MainViewController: UIViewController, UITabBarDelegate {
         self.tabBarController?.tabBar.items?[2].title = "Profile"
         
         self.title = "Events"
-        eventDataSource.delegate = self
+        EventDataSource.delegate = self
         
-       
+        //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        eventListTableView.addSubview(refreshControl)
         
     }
     
@@ -42,6 +46,8 @@ class MainViewController: UIViewController, UITabBarDelegate {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         //self.tabBarController?.navigationItem.hidesBackButton = true
+        
+        eventDataSource.fetchEvents()
     }
     
     
@@ -52,7 +58,7 @@ class MainViewController: UIViewController, UITabBarDelegate {
            let indexPath = eventListTableView.indexPath(for: cell),
            let event = eventDataSource.getEvent(for: indexPath.row),
            let detailController = segue.destination as? EventDetailViewController {
-            detailController.eventID = event.id
+            detailController.event = event
         }
     }
     
@@ -72,7 +78,14 @@ class MainViewController: UIViewController, UITabBarDelegate {
             // Open Profile Page
         }
     }
+    
+    
+    @objc func refresh(_ sender: AnyObject) {
+        eventDataSource.fetchEvents()
+        refreshControl.endRefreshing()
+    }
 
+    
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -107,6 +120,7 @@ extension MainViewController: UITableViewDataSource {
             cell.titleLabel.text = ""
             cell.placeLabel.text = ""
         }
+
         
         return cell
     }
