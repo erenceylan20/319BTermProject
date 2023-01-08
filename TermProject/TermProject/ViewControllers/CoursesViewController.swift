@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoursesViewController: UIViewController {
+class CoursesViewController: UIViewController, UITableViewDelegate {
     
     
     @IBOutlet weak var courseListTableView: UITableView!
@@ -25,11 +25,14 @@ class CoursesViewController: UIViewController {
         courseDataSource.courseDelegate = self
     }
    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.courseDataSource.setCourses()
+    }
     @objc func refresh(_ sender: AnyObject) {
             self.courseDataSource.setCourses()
-            self.courseListTableView.reloadData()
             refreshControl.endRefreshing()
+            self.courseListTableView.reloadData()
+            
     }
     /*
     // MARK: - Navigation
@@ -61,8 +64,6 @@ extension CoursesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell") as? CourseTableViewCell else {
             return UITableViewCell()
         }
-        
-        print("section: \(indexPath.section) row: \(indexPath.row)")
         if let course = courseDataSource.getCourse(day: indexPath.section, index: indexPath.row) {
             cell.courseLabel.text = "\(course.title)"
 
@@ -87,9 +88,11 @@ extension CoursesViewController: UITableViewDataSource {
         let deleteAction = UIContextualAction(style: .destructive,
                                               title: "Delete") { _, _, completionHandler in
             
+
             completionHandler(true)
             if let course = self.courseDataSource.getCourse(day: indexPath.section, index: indexPath.row) {
                 self.courseDataSource.deleteCourse(course: course)
+                self.courseDataSource.setCourses()
                 self.courseListTableView.reloadData()
             }
             
@@ -100,6 +103,9 @@ extension CoursesViewController: UITableViewDataSource {
         config.performsFirstActionWithFullSwipe = false
         return config
     }
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        <#code#>
+//    }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return courseDataSource.getWeekDayName(day: section)
@@ -117,8 +123,6 @@ extension CoursesViewController: CourseDataDelegate {
     }
     
     func courseArrayUpdated() {
-        //self.courseListTableView.reloadData()
-        //self.courseDataSource.setCourses()
         self.courseListTableView.reloadData()
     }
 }

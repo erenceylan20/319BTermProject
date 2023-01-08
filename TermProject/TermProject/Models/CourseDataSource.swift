@@ -22,7 +22,7 @@ class CourseDataSource {
     public var courseDelegate: CourseDataDelegate?
     
     init() {
-        setCourses()
+        self.setCourses()
     }
     
     func setCourses() {
@@ -30,6 +30,7 @@ class CourseDataSource {
             if error != nil {
                 print("get courses error")
             }else {
+                self.courseArray = [[], [], [], [], [], [], []]
                 for doc in document!.documents {
                     let data = doc.data()
                     let beginngTime = data["beginningTime"] as? Timestamp
@@ -49,6 +50,8 @@ class CourseDataSource {
                 
             }
         }
+        self.sortCourseArray()
+        
     }
     func appendCourseMatrix(course: Course) {
         for days in courseArray {
@@ -83,9 +86,23 @@ class CourseDataSource {
         default:
             print("An unknown error occured!!!!")
         }
+        self.sortCourseArray()
+        self.courseDelegate?.courseArrayUpdated()
     }
     func deleteCourse(course: Course) {
         
+        for i in 0...courseArray.count-1 {
+            if courseArray[i].count > 0 {
+                for num in 0...courseArray[i].count-1{
+                    print("i: \(i), num: \(num), courseArray: \(courseArray[i].count)")
+                    if courseArray[i][num].title == course.title {
+                        courseArray[i].remove(at: num)
+                        break
+                    }
+                }
+            }
+            
+        }
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("courses").getDocuments { document, error in
             if error != nil {
                 print("An error occured during deletion")
@@ -100,12 +117,13 @@ class CourseDataSource {
                 }
             }
         }
-        self.setCourses()
         self.courseDelegate?.courseArrayUpdated()
        
     }
     func addNewCourse(course: Course) {
         //print("DB tarafına geldi")
+        appendCourseMatrix(course: course)
+        self.courseDelegate?.courseArrayUpdated()
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("courses").addDocument(data: [
             "id": db.collection("users").document(Auth.auth().currentUser?.uid ?? "").documentID,
             "title": course.title,
@@ -114,9 +132,6 @@ class CourseDataSource {
             "beginningTime": course.beginningTime,
             "endingTime": course.endingTime
         ])
-        appendCourseMatrix(course: course)
-        self.courseDelegate?.courseArrayUpdated()
-        
     }
     
     func getTotalNumberOfCourses() -> Int {
@@ -149,5 +164,15 @@ class CourseDataSource {
             return weekDays[day]
     }
     
+    func sortCourseArray() {
+        for i in 0...courseArray.count-1 {
+            if courseArray[i].count > 0 {
+                courseArray[i].sort {
+                    $0.beginningTime < $1.beginningTime
+                }
+            }
+            
+        }
+    }
 }
 
