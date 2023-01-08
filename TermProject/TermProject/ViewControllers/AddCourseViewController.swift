@@ -18,6 +18,8 @@ class AddCourseViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     
+
+    @IBOutlet weak var dropDownDayMenu: UIPickerView!
     @IBOutlet weak var beginningTimeDatePicker: UIDatePicker!
     
     @IBOutlet weak var endingTimeDatePicker: UIDatePicker!
@@ -25,24 +27,36 @@ class AddCourseViewController: UIViewController {
     
     @IBOutlet weak var addCourseButton: UIButton!
     
+    let courseDataSource = CourseDataSource()
+    
+    let pickerViewSource = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    var selectedValue: String = "Monday"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dropDownDayMenu.delegate = self
+        dropDownDayMenu.dataSource = self
+        
         titleTextField.placeholder = "Title"
         codeTextField.placeholder = "Course Code"
+        
     }
     
     
     @IBAction func addCourse(_ sender: Any) {
         
+
         titleHelperLabel.text = "Title"
         titleHelperLabel.textColor = UIColor.black
         codeHelperLabel.text = "Course Code"
         codeHelperLabel.textColor = UIColor.black
         
-        
+        //var selectedValue = pickerViewSource[pickerView.selectedRowInComponent(0)]
+
         if let title = titleTextField.text,
-           let code = codeTextField.text {
+           let code = codeTextField.text{
+            print(selectedValue)
             
             if title.isEmpty || code.isEmpty {
                 if title.isEmpty {
@@ -54,6 +68,7 @@ class AddCourseViewController: UIViewController {
                     codeHelperLabel.textColor = UIColor.red
                 }
             } else if title.count > 20 || code.count > 20 {
+
                 if title.count > 20 {
                     titleHelperLabel.text = "Title too long!"
                     titleHelperLabel.textColor = UIColor.red
@@ -62,14 +77,22 @@ class AddCourseViewController: UIViewController {
                     codeHelperLabel.text = "Course code too long!"
                     codeHelperLabel.textColor = UIColor.red
                 }
+                    
             } else {
                 
-                
-                self.dismiss(animated: true)
+                let course = Course(id: "", title: title, code: code, day: selectedValue, beginningTime: beginningTimeDatePicker.date, endingTime: endingTimeDatePicker.date)
+                courseDataSource.addNewCourse(course: course)
+                courseDataSource.courseDelegate?.courseArrayUpdated()
+                self.dismiss(animated: true, completion: nil)
+            
+               
             }
         }
         
-    }
+        }
+    
+    
+    
     
 
     /*
@@ -83,3 +106,24 @@ class AddCourseViewController: UIViewController {
     */
 
 }
+
+extension AddCourseViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerViewSource.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+         return pickerViewSource[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+       {
+            // use the row to get the selected row from the picker view
+            // using the row extract the value from your datasource (array[row])
+           self.selectedValue = pickerViewSource[row]
+        }
+    
+}
+

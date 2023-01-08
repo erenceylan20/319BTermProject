@@ -80,9 +80,9 @@ class AddEventViewController: UIViewController {
                 let user = eventDataSource.getUser()
                 
                 let event = Event(id: eventDataSource.setId(),
-                                  hostId: user["uid"] ?? "",
-                                  hostName: user["firstName"] ?? "",
-                                  hostSurname: user["lastName"] ?? "",
+                                  hostId: user["uid"] as! String ?? "" as! String,
+                                  hostName: user["firstName"] as! String ?? "" as! String,
+                                  hostSurname: user["lastName"] as! String ?? "" as! String,
                                   title: title,
                                   beginningTime: beginningDatePicker.date,
                                   endingTime: endingDatePicker.date,

@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var surnameTextField: UITextField!
     
     @IBOutlet weak var signinButton: UIButton!
-    
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,12 +57,24 @@ class SignInViewController: UIViewController {
                 print("error")
             } else {
                 
-                let db = Firestore.firestore()
-                db.collection("users").addDocument(data: ["firstName": name, "lastName": surname, "uid": firebaseResult!.user.uid]) { err in
+                
+                self.db.collection("users").document(firebaseResult!.user.uid).setData([
+                    "firstName" : name,
+                    "lastName": surname,
+                    "uid": firebaseResult!.user.uid]) { err in
                     if err != nil {
                         self.showError("Error saving user data")
                     }
                 }
+             
+                
+//                self.db.collection("users").document(firebaseResult!.user.uid).collection("courses").addDocument(data: [
+//                    "title": ,
+//                    "code": ,
+//                    "day": ,
+//                    "beginningTime": Date(),
+//                    "endingTime": Date()
+//                ])
                 
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController {
@@ -74,8 +86,8 @@ class SignInViewController: UIViewController {
     }
     
     func showError(_ message: String) {
-        errorLabel.text = message
-        errorLabel.alpha = 1
+                    self.errorLabel.text = message
+                    self.errorLabel.alpha = 1
         
     }
     /*

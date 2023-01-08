@@ -12,7 +12,7 @@ import FirebaseFirestore
 class EventDataSource {
     
     let db = Firestore.firestore()
-    var user: [String: String] = ["uid": "", "firstName": "", "lastName": ""]
+    var user: [String: Any] = ["uid": "", "firstName": "", "lastName": ""]
     
     private var eventArray: [Event] = []
     //private let baseURL = "https://wizard-world-api.herokuapp.com"
@@ -176,7 +176,7 @@ class EventDataSource {
 
     }
     
-    func getUser() -> [String: String]{
+    func getUser() -> [String: Any]{
         return self.user
     }
     

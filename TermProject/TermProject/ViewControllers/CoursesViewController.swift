@@ -11,17 +11,26 @@ class CoursesViewController: UIViewController {
     
     
     @IBOutlet weak var courseListTableView: UITableView!
-    
-   
+
+    let refreshControl = UIRefreshControl()
     let courseDataSource = CourseDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Courses"
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        courseListTableView.addSubview(refreshControl)
+        
+        courseDataSource.courseDelegate = self
     }
+   
     
-
+    @objc func refresh(_ sender: AnyObject) {
+            self.courseDataSource.setCourses()
+            self.courseListTableView.reloadData()
+            refreshControl.endRefreshing()
+    }
     /*
     // MARK: - Navigation
 
@@ -42,7 +51,8 @@ extension CoursesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courseDataSource.getNumberOfCourses(day: section)
+        
+        return courseDataSource.getNumberOfCoursesInADay(day: section)
         
     }
     
@@ -52,46 +62,63 @@ extension CoursesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        
+        print("section: \(indexPath.section) row: \(indexPath.row)")
         if let course = courseDataSource.getCourse(day: indexPath.section, index: indexPath.row) {
             cell.courseLabel.text = "\(course.title)"
-            
+
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
             let beginningTime = formatter.string(from: course.beginningTime)
             let endingTime = formatter.string(from: course.endingTime)
-            
+
             cell.timeLabel.text = "\(beginningTime) - \(endingTime)"
-            
-        
+
+
         } else {
-            
+            print("Error while getting courses")
         }
         
         
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        
-//        let deleteAction = UIContextualAction(style: .normal,
-//                                              title: "Delete") { _, _, _ in
-//            
-//            
-//            
-//            
-//            self.courseListTableView.reloadData()
-//           
-//        }
-//        deleteAction.backgroundColor = .systemRed
-//        let config = UISwipeActionsConfiguration(actions: [deleteAction])
-//        
-//        return config
-//    }
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: "Delete") { _, _, completionHandler in
+            
+            completionHandler(true)
+            if let course = self.courseDataSource.getCourse(day: indexPath.section, index: indexPath.row) {
+                self.courseDataSource.deleteCourse(course: course)
+                self.courseListTableView.reloadData()
+            }
+            
+           
+        }
+        deleteAction.backgroundColor = .systemRed
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return courseDataSource.getWeekDayName(day: section)
+        
     }
     
     
+    
+}
+
+extension CoursesViewController: CourseDataDelegate {
+    func courseArrayLoaded() {
+        self.courseDataSource.setCourses()
+        self.courseListTableView.reloadData()
+    }
+    
+    func courseArrayUpdated() {
+        //self.courseListTableView.reloadData()
+        //self.courseDataSource.setCourses()
+        self.courseListTableView.reloadData()
+    }
 }
