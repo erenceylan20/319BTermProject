@@ -47,6 +47,8 @@ class MainViewController: UIViewController, UITabBarDelegate {
         self.tabBarController?.tabBar.isHidden = false
         //self.tabBarController?.navigationItem.hidesBackButton = true
         
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        
         eventDataSource.fetchEvents()
     }
     
@@ -58,6 +60,7 @@ class MainViewController: UIViewController, UITabBarDelegate {
            let indexPath = eventListTableView.indexPath(for: cell),
            let event = eventDataSource.getEvent(for: indexPath.row),
            let detailController = segue.destination as? EventDetailViewController {
+            print(event.attendees)
             detailController.event = event
         }
     }
