@@ -13,8 +13,10 @@ class EventDataSource {
     
     let db = Firestore.firestore()
     var user: [String: Any] = ["uid": "", "firstName": "", "lastName": ""]
+    var attendees: [Attendee] = []
     
-    private var eventArray: [Event] = []
+    
+    private static var eventArray: [Event] = []
     //private let baseURL = "https://wizard-world-api.herokuapp.com"
     private var id = 5
     static var delegate: EventDataDelegate?
@@ -25,21 +27,21 @@ class EventDataSource {
     
     func getEvent(with id: String) -> Event? {
         
-        return eventArray.first(where: {$0.id == id})
+        return EventDataSource.eventArray.first(where: {$0.id == id})
         
     }
     
     func getNumberOfEvents() -> Int {
-        return eventArray.count
+        return EventDataSource.eventArray.count
     }
 
     
     func getEvent(for index: Int) -> Event? {
-        guard index < eventArray.count else {
+        guard index < EventDataSource.eventArray.count else {
             return nil
         }
         
-        return eventArray[index]
+        return EventDataSource.eventArray[index]
     }
     
     func setId() -> String {
@@ -63,7 +65,8 @@ class EventDataSource {
             "createdTime": Date()
         ] as [String : Any]
         db.collection("events")
-            .addDocument(data: temp) 
+            .addDocument(data: temp)
+        self.fetchEvents()
         
     }
     
@@ -93,7 +96,7 @@ class EventDataSource {
                                 if let error = error {
                                         print("Error getting documents: \(error)")
                                 } else {
-                                        self.eventArray = []
+                                        EventDataSource.eventArray = []
                                         for document in querySnapshot!.documents {
                                             let data = document.data()
                                             let beginngTime = data["beginningTime"] as? Timestamp
@@ -111,9 +114,9 @@ class EventDataSource {
                                                               eventType: data["eventType"] as? String ?? "",
                                                               attendees: data["attendees"] as? [String] ?? [],
                                                               createdTime: createdTime?.dateValue() ?? Date())
-                                            self.eventArray.append(event)
+                                            EventDataSource.eventArray.append(event)
                                         }
-                                    self.eventArray = self.eventArray.sorted(by: {
+                                    EventDataSource.eventArray = EventDataSource.eventArray.sorted(by: {
                                         $0.createdTime.compare($1.createdTime) == .orderedDescending
                                     })
                                         EventDataSource.delegate?.eventListUpdated()
@@ -138,7 +141,7 @@ class EventDataSource {
                                                                     "attendees": array
                                                     ])
                                                 }
-                                                
+                                                self.fetchEvents()
                                                 return
                                                 
                                             }
@@ -174,6 +177,31 @@ class EventDataSource {
         return checker
         
 
+    }
+    
+    func setAttendees(userIDs: [String]) {
+        
+        self.attendees = []
+        
+        db.collection("users").getDocuments() { (querySnapshot, error) in
+                                if let error = error {
+                                        print("Error getting documents: \(error)")
+                                } else {
+                                        for document in querySnapshot!.documents {
+                                            if userIDs.contains(document.data()["uid"] as? String ?? "") {
+                                                self.attendees.append(Attendee(name: document.data()["firstName"] as? String ?? "",
+                                                                          surname: document.data()["lastName"] as? String ?? ""))
+                                            }
+                                            
+                                        }
+                                    
+                                }
+                }
+        
+    }
+    
+    func getAttendees() -> [Attendee] {
+        return attendees
     }
     
     func getUser() -> [String: Any]{

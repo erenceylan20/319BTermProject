@@ -23,10 +23,13 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var placeLabel: UILabel!
     
-    @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var detailLabel: UILabel!
     
     @IBOutlet weak var joinButton: UIButton!
     
+    @IBOutlet weak var attendeesButton: UIButton!
     
     var delegate: MainViewController?
     
@@ -34,6 +37,7 @@ class EventDetailViewController: UIViewController {
     let eventDataSource = EventDataSource()
 
     var event: Event?
+    var attendees: [Attendee] = []
     
     var selfEvent: Bool = false
 
@@ -41,7 +45,7 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         print(eventDataSource.getNumberOfEvents())
-
+        
        
         if let event = event
              {
@@ -65,7 +69,9 @@ class EventDetailViewController: UIViewController {
                     selfEvent = true
                 }
             
-                detailTextView.text = event.detail
+                detailLabel.text = event.detail
+            
+                eventDataSource.setAttendees(userIDs: event.attendees)
             
         } else {
             typeImageView.image = nil
@@ -74,18 +80,26 @@ class EventDetailViewController: UIViewController {
             placeLabel.text = ""
             beginningTimeLabel.text = ""
             endingTimeLabel.text = ""
-            detailTextView.text = ""
+            detailLabel.text = ""
             joinButton.isHidden = true
         }
-        
-        
-        
-        
+
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? AttendeesViewController {
+            destination.delegate = self
+            destination.attendees = eventDataSource.getAttendees()
+        }
     }
     
     
@@ -107,3 +121,4 @@ class EventDetailViewController: UIViewController {
 extension EventDetailViewController: EventDataDelegate {
     
 }
+

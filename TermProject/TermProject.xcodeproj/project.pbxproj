@@ -37,6 +37,9 @@
 		67381830296246180070571E /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6738182F296246180070571E /* Course.swift */; };
 		67381832296246420070571E /* CourseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67381831296246420070571E /* CourseDataSource.swift */; };
 		6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776211C29532301001014A2 /* EventTableViewCell.swift */; };
+		6780B971296B4730008F4C43 /* AttendeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780B970296B4730008F4C43 /* AttendeesViewController.swift */; };
+		6780B973296B4A6E008F4C43 /* AttendeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780B972296B4A6E008F4C43 /* AttendeeTableViewCell.swift */; };
+		6780B975296B4CC9008F4C43 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780B974296B4CC9008F4C43 /* Attendee.swift */; };
 		67C3EBA72962EADF0083BDBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67C3EBA62962EADF0083BDBF /* GoogleService-Info.plist */; };
 		67C3EBAA2962EB4D0083BDBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67C3EBA92962EB4D0083BDBF /* FirebaseAuth */; };
 		67C3EBAC2962EC530083BDBF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C3EBAB2962EC530083BDBF /* SignInViewController.swift */; };
@@ -69,6 +72,9 @@
 		6738182F296246180070571E /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		67381831296246420070571E /* CourseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDataSource.swift; sourceTree = "<group>"; };
 		6776211C29532301001014A2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		6780B970296B4730008F4C43 /* AttendeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeesViewController.swift; sourceTree = "<group>"; };
+		6780B972296B4A6E008F4C43 /* AttendeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeTableViewCell.swift; sourceTree = "<group>"; };
+		6780B974296B4CC9008F4C43 /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		67C3EBA62962EADF0083BDBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67C3EBAB2962EC530083BDBF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		67C3EBAD2962EE1E0083BDBF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				67C3EBAB2962EC530083BDBF /* SignInViewController.swift */,
 				67C3EBAD2962EE1E0083BDBF /* LogInViewController.swift */,
 				0A16873329635746006F3CD3 /* LandingPageViewController.swift */,
+				6780B970296B4730008F4C43 /* AttendeesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +191,7 @@
 				6738182F296246180070571E /* Course.swift */,
 				67381831296246420070571E /* CourseDataSource.swift */,
 				0A011117296B0F62008EE7FE /* CourseDataDelegate.swift */,
+				6780B974296B4CC9008F4C43 /* Attendee.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 			children = (
 				6776211C29532301001014A2 /* EventTableViewCell.swift */,
 				6738182D2962457B0070571E /* CourseTableViewCell.swift */,
+				6780B972296B4A6E008F4C43 /* AttendeeTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -290,16 +299,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				67381830296246180070571E /* Course.swift in Sources */,
+				6780B973296B4A6E008F4C43 /* AttendeeTableViewCell.swift in Sources */,
 				6776211D29532302001014A2 /* EventTableViewCell.swift in Sources */,
 				67107F0A2953533700AAD382 /* AddEventViewController.swift in Sources */,
 				0AE01DB5295106CD000FAB06 /* MainViewController.swift in Sources */,
 				67C3EBAE2962EE1E0083BDBF /* LogInViewController.swift in Sources */,
 				67ED0DAA2962CB2A00F000D5 /* ProfileViewController.swift in Sources */,
+				6780B971296B4730008F4C43 /* AttendeesViewController.swift in Sources */,
 				0A16872F296350DD006F3CD3 /* Utilities.swift in Sources */,
 				0AE01DB1295106CD000FAB06 /* AppDelegate.swift in Sources */,
 				67107F0629533CF700AAD382 /* EventDataSource.swift in Sources */,
 				0A011118296B0F62008EE7FE /* CourseDataDelegate.swift in Sources */,
 				0A16873429635746006F3CD3 /* LandingPageViewController.swift in Sources */,
+				6780B975296B4CC9008F4C43 /* Attendee.swift in Sources */,
 				67ED0DAC2962CD4A00F000D5 /* AddCourseViewController.swift in Sources */,
 				67381832296246420070571E /* CourseDataSource.swift in Sources */,
 				0AE01DB3295106CD000FAB06 /* SceneDelegate.swift in Sources */,
