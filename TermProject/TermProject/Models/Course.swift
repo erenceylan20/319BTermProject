@@ -14,13 +14,15 @@ class Course {
     let id: String
     let title: String
     let code: String
+    let day: String
     let beginningTime: Date
     let endingTime: Date
     
-    init(id: String, title: String, code: String, beginningTime: Date, endingTime: Date) {
+    init(id: String, title: String, code: String, day: String, beginningTime: Date, endingTime: Date) {
         self.id = id
         self.title = title
         self.code = code
+        self.day = day
         self.beginningTime = beginningTime
         self.endingTime = endingTime
     }
