@@ -46,7 +46,6 @@ class EventDetailViewController: UIViewController {
         
         print(eventDataSource.getNumberOfEvents())
         
-       
         if let event = event
              {
                 typeImageView.image = UIImage(named: event.eventType)
@@ -113,7 +112,6 @@ class EventDetailViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
     
     
 }
