@@ -15,11 +15,11 @@ class CourseDataSource {
     let db = Firestore.firestore()
     
     //var user : [String: Any] = ["uid": "", "firstName": "", "lastName": "", "courses": []]
-    private var courseArray: [[Course]] = [[], [], [], [], [], [], []]
+    private static var courseArray: [[Course]] = [[], [], [], [], [], [], []]
     //private let baseURL = "https://wizard-world-api.herokuapp.com"
     //var delegate: CourseDataDelegate?
     
-    public var courseDelegate: CourseDataDelegate?
+    public static var courseDelegate: CourseDataDelegate?
     
     init() {
         self.setCourses()
@@ -30,7 +30,7 @@ class CourseDataSource {
             if error != nil {
                 print("get courses error")
             }else {
-                self.courseArray = [[], [], [], [], [], [], []]
+                CourseDataSource.courseArray = [[], [], [], [], [], [], []]
                 for doc in document!.documents {
                     let data = doc.data()
                     let beginngTime = data["beginningTime"] as? Timestamp
@@ -45,16 +45,14 @@ class CourseDataSource {
                     )
                     self.appendCourseMatrix(course: course)
                 }
-                
-                
-                
+                CourseDataSource.courseDelegate?.courseArrayLoaded()
             }
         }
         self.sortCourseArray()
         
     }
     func appendCourseMatrix(course: Course) {
-        for days in courseArray {
+        for days in CourseDataSource.courseArray {
             for oldCourse in days {
                 if oldCourse.title == course.title {
                     return
@@ -63,46 +61,47 @@ class CourseDataSource {
         }
         switch(course.day) {
             case "Monday":
-                courseArray[0].append(course)
+                CourseDataSource.courseArray[0].append(course)
                 return
             case "Tuesday":
-                courseArray[1].append(course)
+                CourseDataSource.courseArray[1].append(course)
                 return
             case "Wednesday":
-                courseArray[2].append(course)
+                CourseDataSource.courseArray[2].append(course)
                 return
             case "Thursday":
-                courseArray[3].append(course)
+                CourseDataSource.courseArray[3].append(course)
                 return
             case "Friday":
-                courseArray[4].append(course)
+                CourseDataSource.courseArray[4].append(course)
                 return
             case "Saturday":
-                courseArray[5].append(course)
+                CourseDataSource.courseArray[5].append(course)
                 return
             case "Sunday":
-                courseArray[6].append(course)
+                CourseDataSource.courseArray[6].append(course)
                 return
         default:
             print("An unknown error occured!!!!")
         }
         self.sortCourseArray()
-        self.courseDelegate?.courseArrayUpdated()
     }
+    
     func deleteCourse(course: Course) {
-        
-        for i in 0...courseArray.count-1 {
-            if courseArray[i].count > 0 {
-                for num in 0...courseArray[i].count-1{
-                    print("i: \(i), num: \(num), courseArray: \(courseArray[i].count)")
-                    if courseArray[i][num].title == course.title {
-                        courseArray[i].remove(at: num)
+        /*
+        for i in 0...CourseDataSource.courseArray.count-1 {
+            if CourseDataSource.courseArray[i].count > 0 {
+                for num in 0...CourseDataSource.courseArray[i].count-1{
+                    print("i: \(i), num: \(num), courseArray: \(CourseDataSource.courseArray[i].count)")
+                    if CourseDataSource.courseArray[i][num].title == course.title {
+                        CourseDataSource.courseArray[i].remove(at: num)
                         break
                     }
                 }
             }
             
         }
+         */
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("courses").getDocuments { document, error in
             if error != nil {
                 print("An error occured during deletion")
@@ -115,15 +114,14 @@ class CourseDataSource {
                     }
                     
                 }
+                CourseDataSource.courseDelegate?.courseArrayLoaded()
             }
+            self.setCourses()
         }
-        self.courseDelegate?.courseArrayUpdated()
-       
     }
+    
     func addNewCourse(course: Course) {
         //print("DB tarafına geldi")
-        appendCourseMatrix(course: course)
-        self.courseDelegate?.courseArrayUpdated()
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("courses").addDocument(data: [
             "id": db.collection("users").document(Auth.auth().currentUser?.uid ?? "").documentID,
             "title": course.title,
@@ -132,32 +130,33 @@ class CourseDataSource {
             "beginningTime": course.beginningTime,
             "endingTime": course.endingTime
         ])
+        self.setCourses()
     }
     
     func getTotalNumberOfCourses() -> Int {
             var tot = 0
-            for array in courseArray {
+            for array in CourseDataSource.courseArray {
                 tot += array.count
             }
             return tot
     }
     
     func getNumberOfCoursesInADay(day: Int) -> Int {
-        return courseArray[day].count
+        return CourseDataSource.courseArray[day].count
     }
     func getCourse(day: Int, index:Int) -> Course? {
-        guard day < courseArray.count else {
+        guard day < CourseDataSource.courseArray.count else {
                 return nil
             }
-            guard index < courseArray[day].count else {
+        guard index < CourseDataSource.courseArray[day].count else {
                 return nil
             }
             
-            return courseArray[day][index]
+        return CourseDataSource.courseArray[day][index]
     }
     
     func getCourseArray() ->[[Course]] {
-        return self.courseArray
+        return CourseDataSource.courseArray
     }
     
     func getWeekDayName(day: Int) -> String {
@@ -165,9 +164,9 @@ class CourseDataSource {
     }
     
     func sortCourseArray() {
-        for i in 0...courseArray.count-1 {
-            if courseArray[i].count > 0 {
-                courseArray[i].sort {
+        for i in 0...CourseDataSource.courseArray.count-1 {
+            if CourseDataSource.courseArray[i].count > 0 {
+                CourseDataSource.courseArray[i].sort {
                     $0.beginningTime < $1.beginningTime
                 }
             }

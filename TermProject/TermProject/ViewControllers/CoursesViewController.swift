@@ -22,7 +22,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate {
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         courseListTableView.addSubview(refreshControl)
         
-        courseDataSource.courseDelegate = self
+        CourseDataSource.courseDelegate = self
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -30,9 +30,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate {
     }
     @objc func refresh(_ sender: AnyObject) {
             self.courseDataSource.setCourses()
-            refreshControl.endRefreshing()
-            self.courseListTableView.reloadData()
-            
+            refreshControl.endRefreshing()            
     }
     /*
     // MARK: - Navigation
@@ -92,8 +90,6 @@ extension CoursesViewController: UITableViewDataSource {
             completionHandler(true)
             if let course = self.courseDataSource.getCourse(day: indexPath.section, index: indexPath.row) {
                 self.courseDataSource.deleteCourse(course: course)
-                self.courseDataSource.setCourses()
-                self.courseListTableView.reloadData()
             }
             
            
@@ -118,8 +114,8 @@ extension CoursesViewController: UITableViewDataSource {
 
 extension CoursesViewController: CourseDataDelegate {
     func courseArrayLoaded() {
-        self.courseDataSource.setCourses()
         self.courseListTableView.reloadData()
+        print("Load")
     }
     
     func courseArrayUpdated() {
