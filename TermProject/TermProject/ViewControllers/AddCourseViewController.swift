@@ -41,6 +41,9 @@ class AddCourseViewController: UIViewController {
         titleTextField.placeholder = "Title"
         codeTextField.placeholder = "Course Code"
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
     }
     
     
@@ -82,14 +85,18 @@ class AddCourseViewController: UIViewController {
                 
                 let course = Course(id: "", title: title, code: code, day: selectedValue, beginningTime: beginningTimeDatePicker.date, endingTime: endingTimeDatePicker.date)
                 courseDataSource.addNewCourse(course: course)
-                courseDataSource.courseDelegate?.courseArrayUpdated()
                 self.dismiss(animated: true, completion: nil)
             
                
             }
         }
         
-        }
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     
     

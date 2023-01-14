@@ -80,9 +80,9 @@ class AddEventViewController: UIViewController {
                 let user = eventDataSource.getUser()
                 
                 let event = Event(id: eventDataSource.setId(),
-                                  hostId: user["uid"] as! String ?? "" as! String,
-                                  hostName: user["firstName"] as! String ?? "" as! String,
-                                  hostSurname: user["lastName"] as! String ?? "" as! String,
+                                  hostId: user["uid"] as? String ?? "",
+                                  hostName: user["firstName"] as? String ?? "",
+                                  hostSurname: user["lastName"] as? String ?? "",
                                   title: title,
                                   beginningTime: beginningDatePicker.date,
                                   endingTime: endingDatePicker.date,
@@ -116,6 +116,8 @@ class AddEventViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
         
+        
+        
 
         let optionsClosure = { (action: UIAction) in
              print(action.title)
@@ -137,6 +139,7 @@ class AddEventViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(sender: NSNotification) {
+        
          self.view.frame.origin.y = -150 // Move view 150 points upward
     }
 
